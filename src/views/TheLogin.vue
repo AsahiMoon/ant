@@ -1,6 +1,7 @@
 <!--基本html代码区域-->
 <template>
   <div class="firstdemo">
+    <img :src="logo">
     <el-row :gutter="20">
       <el-col  :span="8" :offset="8">
     <el-card class="box-card" shadow="always">
@@ -52,6 +53,7 @@ export default {
   name: 'firstdemo',
   data () {
     return {
+      logo: require('../assets/logo.png'),
       form: {
         name: '',
         password: ''
@@ -62,7 +64,10 @@ export default {
   methods: {
     /* 提交进行判断的函数 */
     submit: function () {
-      if (this.form.name === this.form.password) { alert('登陆成功') } else { alert('账号或密码错误') }
+      if (this.form.name === this.form.password) {
+        alert('登陆成功')
+        this.logo = require('../assets/logo1.png')
+      } else { alert('账号或密码错误') }
     },
     register: function () {}
   }
