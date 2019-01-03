@@ -46,31 +46,27 @@
   </div>
 </template>
 
-
 <!--数据存贮交互，事件控制地区-->
 <script>
-  export default {
-    name: 'firstdemo',
-    data () {
-      return {
-        form:{
-          name:'',
-          password:'',
-        },
-
+export default {
+  name: 'firstdemo',
+  data () {
+    return {
+      form: {
+        name: '',
+        password: ''
       }
+
+    }
+  },
+  methods: {
+    /* 提交进行判断的函数 */
+    submit: function () {
+      if (this.form.name === this.form.password) { alert('登陆成功') } else { alert('账号或密码错误') }
     },
-    methods:{
-      /*提交进行判断的函数 */
-      submit:function(){
-        if(this.form.name == this.form.password)
-          alert("登陆成功")
-        else
-          alert("账号或密码错误")
-      },
-      register:function(){},
-    },
+    register: function () {}
   }
+}
 </script>
 
 <!-- 写样式的地方 -->
