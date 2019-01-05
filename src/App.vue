@@ -19,9 +19,6 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-#app img{
-  margin: 5px;
-}
   body{
     background: #f4f7ed;
   }

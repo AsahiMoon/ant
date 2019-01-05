@@ -32,7 +32,7 @@
       <el-row type="flex" justify="center">
         <el-col>
             <el-button type="primary" @click="submit">登录</el-button>
-            <el-button @click="register">注册</el-button>
+            <el-button type="primary" @click="register">注册</el-button>
         </el-col>
       </el-row>
       <el-row type="flex" justify="center">
@@ -69,7 +69,9 @@ export default {
         this.logo = require('../assets/logo1.png')
       } else { alert('账号或密码错误') }
     },
-    register: function () {}
+    register: function () {
+      this.$router.push({path: '/register'})
+    }
   }
 }
 </script>
