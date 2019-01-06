@@ -64,10 +64,14 @@ export default {
   methods: {
     /* 提交进行判断的函数 */
     submit: function () {
-      if (this.form.name === this.form.password) {
-        alert('登陆成功')
-        this.logo = require('../assets/logo1.png')
-      } else { alert('账号或密码错误') }
+      let data = this.qs.stringify({'username': 1, 'password': 1})
+      this.axios.post('/ant/login.form', data).then(response => {
+        alert(this.form.name)
+        alert(typeof response)
+        console.log((response.data))
+      }).catch(error => {
+        alert('错误：' + error)
+      })
     },
     register: function () {
       this.$router.push({path: '/register'})

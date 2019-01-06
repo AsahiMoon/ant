@@ -40,7 +40,7 @@
                         <el-row type="flex" justify="center" >
                             <el-col  style="font-size: 0.7em">
                                 点击注册表示你已阅读并同意
-                                <el-button type="text" @click="TODO">《Ant 服务条款》 </el-button>
+                                <el-button type="text" @click="terms">《Ant 服务条款》 </el-button>
                             </el-col>
                         </el-row>
                         <el-row type="flex" justify="center">
@@ -79,14 +79,22 @@ export default {
   methods: {
     /* 提交进行判断的函数 */
     submit: function () {
-      if (this.form.name === this.form.password && this.form.name === this.form.checkpassword) {
-        alert('注册成功')
-        this.logo = require('../assets/logo1.png')
-      } else { alert('注册失败') }
+      let data = this.qs.stringify({
+        'username': this.form.name,
+        'password': this.form.password
+      })
+      this.axios.post('/ant/register.form', data).then(response => {
+        alert(typeof response)
+        console.log(JSON.stringify(response.data))
+      }).catch(error => {
+        alert('错误：' + error)
+      })
     },
-    register: function () {},
     login: function () {
       this.$router.push({path: '/'})
+    },
+    terms: function () {
+
     }
   }
 }
