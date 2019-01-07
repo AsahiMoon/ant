@@ -1,42 +1,20 @@
 <template>
-    <div class="firstdemo">
+    <div class="register">
         <img :src="logo">
-        <el-row :gutter="20">
-            <el-col  :span="8" :offset="8">
                 <el-card class="box-card" shadow="always">
                     <el-form ref="form" :model="form" label-width="100px">
-                        <el-row type="flex" justify="center">
-                            <el-col :span="10" :offset="-10">
-                                <h2>注册</h2>
-                            </el-col>
-                        </el-row>
-                        <el-row type="flex" justify="center">
-                            <el-col>
-                                <el-form-item label="账户：" prop="name">
-                                    <el-col :span="19">
-                                        <el-input v-model="form.name" size="small"></el-input>
-                                    </el-col>
-                                </el-form-item>
-                            </el-col>
-                        </el-row>
-                        <el-row type="flex" justify="center">
-                            <el-col>
-                                <el-form-item label="密码：" prop="password">
-                                    <el-col :span="19">
-                                        <el-input v-model="form.password" size="small" type="password"></el-input>
-                                    </el-col>
-                                </el-form-item>
-                            </el-col>
-                        </el-row>
-                        <el-row type="flex" justify="center">
-                            <el-col>
+                      <h2>注册</h2>
+                      <el-form-item label="账户：" prop="name">
+                        <el-input v-model="form.name" size="small"></el-input>
+                      </el-form-item>
+                      <el-form-item label="密码：" prop="password">
+                          <el-input v-model="form.password" size="small" type="password"></el-input>
+                      </el-form-item>
+
                                 <el-form-item label="确认密码：" prop="password">
-                                    <el-col :span="19">
                                         <el-input v-model="form.checkpassword" size="small" type="password"></el-input>
-                                    </el-col>
                                 </el-form-item>
-                            </el-col>
-                        </el-row>
+
                         <el-row type="flex" justify="center" >
                             <el-col  style="font-size: 0.7em">
                                 点击注册表示你已阅读并同意
@@ -57,14 +35,11 @@
                         </el-row>
                     </el-form>
                 </el-card>
-            </el-col>
-        </el-row>
     </div>
 </template>
 <script>
 export default {
-  name: 'TheRegister',
-
+  name: 'register',
   data () {
     return {
       logo: require('../assets/logo.png'),
@@ -84,7 +59,6 @@ export default {
         'password': this.form.password
       })
       this.axios.post('/ant/register.form', data).then(response => {
-        alert(typeof response)
         console.log(JSON.stringify(response.data))
       }).catch(error => {
         alert('错误：' + error)
@@ -102,5 +76,12 @@ export default {
 </script>
 
 <style scoped>
-
+  .register{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: initial;
+    align-items: center;
+    text-align: center;
+  }
 </style>

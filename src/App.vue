@@ -1,12 +1,16 @@
 <template>
   <div id="app">
+    <vue-canvas-nest></vue-canvas-nest>
     <router-view/>
   </div>
 </template>
 
 <script>
+// 动态背景
+import vueCanvasNest from 'vue-canvas-nest'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { vueCanvasNest }
 }
 </script>
 
@@ -20,6 +24,5 @@ export default {
   margin-top: 60px;
 }
   body{
-    background: #f4f7ed;
   }
 </style>
