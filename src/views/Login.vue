@@ -3,7 +3,7 @@
   <div class="login">
     <img :src="logo">
     <el-card class="box-card" shadow="always">
-    <el-form ref="form" :model="form" label-width="100px">
+      <el-form :model="form" status-icon :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
       <el-row type="flex" justify="center">
             <h2>登录</h2>
       </el-row>
@@ -18,7 +18,7 @@
           </el-form-item>
       </el-row>
       <el-row type="flex" justify="center">
-            <el-button type="primary" @click="submit">登录</el-button>
+            <el-button type="primary" @click="submitForm('form')">登录</el-button>
             <el-button type="primary" @click="register">注册</el-button>
       </el-row>
     </el-form>
@@ -31,27 +31,58 @@
 export default {
   name: 'login',
   data () {
+    var validateName = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入用户名'))
+      }
+      callback()
+    }
+    var validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'))
+      } else {
+        callback()
+      }
+    }
     return {
       logo: require('../assets/logo.png'),
       form: {
         name: '',
         password: ''
+      },
+      rules: {
+        name: [
+          { validator: validateName, trigger: 'blur' }
+        ],
+        password: [
+          { validator: validatePass, trigger: 'blur' }
+        ]
       }
-
     }
   },
   methods: {
     /* 提交进行判断的函数 */
-    submit: function () {
-      let data = this.qs.stringify({'username': 1, 'password': 1})
-      this.axios.post('/ant/login.form', data).then(response => {
-        console.log((response.data))
+    submitData: function () {
+      // 转成axios需要的形式
+      let PostData = this.qs.stringify({'username': this.form.name, 'password': this.form.password})
+      this.axios.post('/ant/login.form', PostData).then(response => {
+        let GetData = JSON.stringify(response.data.message)
+        alert(GetData)
       }).catch(error => {
         alert('错误：' + error)
       })
     },
     register: function () {
       this.$router.push({path: '/register'})
+    },
+    submitForm (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.submitData()
+        } else {
+          return false
+        }
+      })
     }
   }
 }
