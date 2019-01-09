@@ -22,9 +22,7 @@
                      </el-col>
                  </el-row>
                  <el-row type="flex" justify="center">
-                     <el-col >
-                         <el-button  type="primary" @click="submitForm('form')" style="width: 68%; font-size: 1.2em; word-spacing: 2.5em">注&nbsp;册</el-button>
-                     </el-col>
+                         <el-button  type="primary" @click="submitForm('form')" style="width: 68%; font-size: 1.2em; word-spacing: 2.5em">注册</el-button>
                  </el-row>
 
                  <el-row type="flex" justify="center" style="margin-top: 20px">
