@@ -15,12 +15,17 @@
                         <el-input v-model="form.checkpassword" size="small" type="password"></el-input>
                 </el-form-item>
 
-               <el-form-item label="昵称：" prop="username">
+               <el-form-item label="昵称：" prop="username" :rules="{
+      required: true, message: '昵称不能为空', trigger: 'blur'
+    }">
                  <el-input v-model="form.username" size="small"></el-input>
                </el-form-item>
 
-               <el-form-item label="邮箱：" prop="email">
-                 <el-input v-model="form.email" size="small" ></el-input>
+               <el-form-item label="邮箱：" prop="email" :rules="[
+      { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+      { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+    ]">
+                 <el-input v-model="form.email" size="small"></el-input>
                </el-form-item>
 
                  <el-row type="flex" justify="center" >
@@ -74,7 +79,9 @@ export default {
       form: {
         name: '',
         password: '',
-        checkpassword: ''
+        checkpassword: '',
+        username: '',
+        email: ''
       },
       rules: {
         name: [
@@ -95,8 +102,8 @@ export default {
       let data = ({
         'username': this.form.name,
         'password': this.form.password,
-        'name': this.username,
-        'email': this.email
+        'name': this.form.username,
+        'email': this.form.email
       })
       this.axios.post('/ant/register', data).then(response => {
         let GetData = JSON.stringify(response.data.message)
