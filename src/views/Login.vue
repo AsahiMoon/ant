@@ -64,8 +64,8 @@ export default {
     /* 提交进行判断的函数 */
     submitData: function () {
       // 转成axios需要的形式
-      let PostData = this.qs.stringify({'username': this.form.name, 'password': this.form.password})
-      this.axios.post('/ant/login.form', PostData).then(response => {
+      let PostData = {'username': this.form.name, 'password': this.form.password}
+      this.axios.post('/ant/login', PostData).then(response => {
         let GetData = JSON.stringify(response.data.message)
         alert(GetData)
       }).catch(error => {

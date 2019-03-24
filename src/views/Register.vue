@@ -15,6 +15,14 @@
                         <el-input v-model="form.checkpassword" size="small" type="password"></el-input>
                 </el-form-item>
 
+               <el-form-item label="昵称：" prop="username">
+                 <el-input v-model="form.username" size="small"></el-input>
+               </el-form-item>
+
+               <el-form-item label="邮箱：" prop="email">
+                 <el-input v-model="form.email" size="small" ></el-input>
+               </el-form-item>
+
                  <el-row type="flex" justify="center" >
                      <el-col  style="font-size: 0.7em">
                          点击注册表示你已阅读并同意
@@ -84,11 +92,13 @@ export default {
   methods: {
     /* 提交进行判断的函数 */
     submitData: function () {
-      let data = this.qs.stringify({
+      let data = ({
         'username': this.form.name,
-        'password': this.form.password
+        'password': this.form.password,
+        'name': this.username,
+        'email': this.email
       })
-      this.axios.post('/ant/register.form', data).then(response => {
+      this.axios.post('/ant/register', data).then(response => {
         let GetData = JSON.stringify(response.data.message)
         alert(GetData)
       }).catch(error => {
