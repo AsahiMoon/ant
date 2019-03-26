@@ -65,9 +65,9 @@ export default {
     submitData: function () {
       // 转成axios需要的形式
       let PostData = {'username': this.form.name, 'password': this.form.password}
-      this.axios.post('/ant/login', PostData).then(response => {
-        let GetData = JSON.stringify(response.data.message)
-        alert(GetData)
+      this.$http.post('/ant/login', PostData).then(response => {
+        alert(response.data.message)
+        window.localStorage['token'] = JSON.stringify(response.data.extra.token)
       }).catch(error => {
         alert('错误：' + error)
       })

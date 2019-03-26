@@ -5,13 +5,12 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import qs from 'qs'
+// import VueAxios from 'vue-axios'
 
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
-Vue.prototype.qs = qs
-Vue.use(VueAxios, axios)
+// Vue.use(VueAxios, axios)
+import http from './http' // 此处问http文件的路径
+Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

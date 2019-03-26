@@ -105,9 +105,8 @@ export default {
         'name': this.form.username,
         'email': this.form.email
       })
-      this.axios.post('/ant/register', data).then(response => {
-        let GetData = JSON.stringify(response.data.message)
-        alert(GetData)
+      this.$http.post('/ant/register', data).then(response => {
+        alert(response.data.message)
       }).catch(error => {
         alert('错误：' + error)
       })
