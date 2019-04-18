@@ -1,5 +1,6 @@
 <template>
     <div class="register" style="margin-top: 20px">
+    <div class="register">
         <img :src="logo">
          <el-card class="box-card" shadow="always">
              <el-form ref="form" :model="form" label-width="100px"  status-icon :rules="rules">
@@ -46,6 +47,7 @@
                  </el-row>
              </el-form>
          </el-card>
+    </div>
     </div>
 </template>
 <script>

@@ -1,6 +1,7 @@
 <!--基本html代码区域-->
 <template>
   <div class="login" style="margin-top: 100px">
+  <div class="login">
     <img :src="logo">
     <el-card class="box-card" shadow="always">
       <el-form :model="form" status-icon :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
@@ -23,6 +24,7 @@
       </el-row>
     </el-form>
     </el-card>
+  </div>
   </div>
 </template>
 
