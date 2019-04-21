@@ -1,4 +1,5 @@
 <template>
+    <div class="register" style="margin-top: 20px">
     <div class="register">
         <img :src="logo">
          <el-card class="box-card" shadow="always">
@@ -46,6 +47,7 @@
                  </el-row>
              </el-form>
          </el-card>
+    </div>
     </div>
 </template>
 <script>

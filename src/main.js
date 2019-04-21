@@ -9,6 +9,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
 // Vue.use(VueAxios, axios)
+
 import http from './http' // 此处问http文件的路径
 Vue.prototype.$http = http
 

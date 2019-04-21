@@ -1,5 +1,6 @@
 <!--基本html代码区域-->
 <template>
+  <div class="login" style="margin-top: 100px">
   <div class="login">
     <img :src="logo">
     <el-card class="box-card" shadow="always">
@@ -23,6 +24,7 @@
       </el-row>
     </el-form>
     </el-card>
+  </div>
   </div>
 </template>
 
@@ -79,6 +81,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.submitData()
+          this.$router.push({path: '/Team'})
         } else {
           return false
         }

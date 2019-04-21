@@ -17,6 +17,13 @@
       </el-table-column>
       <el-table-column prop="teamname" width="240" align="center"></el-table-column>
     </el-table>
+        <el-table-column prop="teamid" width="120" align="center"></el-table-column>
+        <el-table-column width="240" align="center">
+          <template   slot-scope="scope">
+            <img :src="scope.row.image"  min-width="70" height="70" />
+          </template>
+        </el-table-column>
+        <el-table-column prop="teamname" width="240" align="center"></el-table-column>
     </el-card>
   </div>
 </template>
