@@ -10,8 +10,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
 // Vue.use(VueAxios, axios)
 
-import http from './http' // 此处问http文件的路径
+import http from './http'
+
+// 转表单形式用
+import qs from 'qs'
 Vue.prototype.$http = http
+Vue.prototype.qs = qs
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

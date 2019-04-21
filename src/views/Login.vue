@@ -68,8 +68,12 @@ export default {
       // 转成axios需要的形式
       let PostData = {'username': this.form.name, 'password': this.form.password}
       this.$http.post('/ant/login', PostData).then(response => {
-        alert(response.data.message)
-        window.localStorage['token'] = JSON.stringify(response.data.extra.token)
+        if (response.data.code === 0) {
+          window.localStorage['token'] = response.data.extra.token
+          this.$router.push({path: '/Team'})
+        } else {
+          alert(response.data.message)
+        }
       }).catch(error => {
         alert('错误：' + error)
       })
@@ -81,7 +85,6 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.submitData()
-          this.$router.push({path: '/Team'})
         } else {
           return false
         }

@@ -9,21 +9,21 @@
         </el-col>
       </el-row>
       <el-table :data="tableData" style="width: 600px; margin: auto; padding-top: 50px">
-      <el-table-column prop="teamid" width="120" align="center"></el-table-column>
-      <el-table-column width="240" align="center">
-        <template   slot-scope="scope">
-          <img :src="scope.row.image"  min-width="70" height="70" />
-        </template>
-      </el-table-column>
-      <el-table-column prop="teamname" width="240" align="center"></el-table-column>
+      <el-table-column prop="teamId" width="120" align="center"></el-table-column>
+<!--      <el-table-column width="240" align="center">-->
+<!--        <template   slot-scope="scope">-->
+<!--          <img :src="scope.row.image"  min-width="70" height="70" />-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+      <el-table-column prop="teamName" width="240" align="center"></el-table-column>
     </el-table>
-        <el-table-column prop="teamid" width="120" align="center"></el-table-column>
+        <el-table-column prop="teamId" width="120" align="center"></el-table-column>
         <el-table-column width="240" align="center">
           <template   slot-scope="scope">
             <img :src="scope.row.image"  min-width="70" height="70" />
           </template>
         </el-table-column>
-        <el-table-column prop="teamname" width="240" align="center"></el-table-column>
+        <el-table-column prop="teamName" width="240" align="center"></el-table-column>
     </el-card>
   </div>
 </template>
@@ -33,29 +33,21 @@ export default {
   name: 'Team',
   data () {
     return {
-      tableData: [{
-        teamid: '1',
-        image: 'http://img3.imgtn.bdimg.com/it/u=2150681981,1079538934&fm=26&gp=0.jpg',
-        teamname: '...'
-      },
-      {
-        teamid: '99',
-        image: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1423412453,1185890341&fm=173&app=49&f=JPEG?w=640&h=582&s=5132217755707182405105CA0100A0B2',
-        teamname: '???'
-      }]
+      tableData: [
+      ]
     }
   },
   mounted: function () {
-    this.test()
+    this.getTeamList()
   },
   methods: {
     createTeam: function () {
       this.$router.push({path: '/CreateTeam'})
     },
-    test: function () {
+    getTeamList: function () {
+      // 查看团队列表
       this.$http.post('/ant/team/list').then(response => {
-        alert(response.data.message)
-        window.localStorage['token'] = JSON.stringify(response.data.extra.token)
+        this.tableData = (response.data.extra)
       }).catch(error => {
         alert('错误：' + error)
       })

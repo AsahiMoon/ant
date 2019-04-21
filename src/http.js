@@ -3,13 +3,13 @@ import router from './router'
 
 // axios 配置
 axios.defaults.timeout = 8000
-// axios.defaults.baseURL = 'https://api.github.com'
+// axios.defaults.baseURL = 'http://119.23.187.127/ant/'
 
 // http request 拦截器
 axios.interceptors.request.use(
   config => {
     if (localStorage.token) { // 判断token是否存在
-      config.headers.Authorization = localStorage.token // 将token设置成请求头
+      config.headers.token = localStorage.token // 将token设置成请求头
     }
     return config
   },
