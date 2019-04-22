@@ -38,14 +38,16 @@ export default {
           // 这里接口文档要求表单形式
           let PostData = this.qs.stringify({'teamName': this.ruleForm.teamname})
           this.$http.post('/ant/team/create', PostData).then(response => {
-            alert(response.data.message)
+            if (response.data.code === 0) {
+              alert(response.data.message)
+              this.$router.push({path: '/Team'})
+            } else {
+              alert(response.data.message)
+            }
           }).catch(error => {
             alert('错误：' + error)
           })
-          alert('submit!')
-          this.$router.push({path: '/Team'})
         } else {
-          console.log('error submit!!')
           return false
         }
       })
