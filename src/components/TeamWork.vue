@@ -1,6 +1,6 @@
 <template>
   <div class = 'teamwork'>
-    <el-row gutter="30" style="max-width: 960px; margin: auto; padding-bottom: 20px">
+    <el-row style="max-width: 960px; margin: auto; padding-bottom: 20px">
       <el-col :span="1" style="height: 10px"></el-col>
       <el-col :span="3" style="font-size: 400%; min-width: 200px; padding-left: 0px; padding-right: 0px;" @click.native="project">A n t</el-col>
       <el-col :span="1" style="min-width: 40px; padding-top: 25px; padding-left: 0px; padding-right: 0px" @click.native="project"><a>项目</a></el-col>
@@ -13,7 +13,7 @@
       <el-col :span="1" style="min-width: 40px; padding-top: 25px; padding-left: 0px; padding-right: 0px"><a>团队</a></el-col>
       <el-col :span="1" style="min-width: 60px; padding-top: 25px; padding-left: 0px; padding-right: 0px"><a>我自己</a></el-col>
       <el-col :span="1" style="min-width: 40px; padding-top: 25px; padding-left: 0px; padding-right: 0px"></el-col>
-      <el-col :span="4" style="min-width: 80px; padding-top: 15px; padding-left: 0px; padding-right: 0px">
+      <el-col :span="4" style="min-width: 140px; padding-top: 15px; padding-left: 0px; padding-right: 0px">
         <el-input placeholder="搜索"><el-button slot="append" icon="el-icon-search"></el-button></el-input>
       </el-col>
       <el-col :span="1" style="min-width: 60px; padding-top: 15px; padding-left: 0px; padding-right: 0px">

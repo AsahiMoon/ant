@@ -8,7 +8,7 @@
           <el-button type="primary" round @click="createTeam">创建团队</el-button>
         </el-col>
       </el-row>
-      <el-table :data="tableData" style="width: 600px; margin: auto; padding-top: 50px">
+      <el-table :data="tableData" style="width: 360px; margin: auto; padding-top: 50px">
       <el-table-column prop="teamId" width="120" align="center" label="teamId"></el-table-column>
 <!--      <el-table-column width="240" align="center">-->
 <!--        <template   slot-scope="scope">-->
@@ -17,13 +17,13 @@
 <!--      </el-table-column>-->
       <el-table-column prop="teamName" width="240" align="center" label="teamName"></el-table-column>
     </el-table>
-        <el-table-column prop="teamId" width="120" align="center"></el-table-column>
-        <el-table-column width="240" align="center">
-          <template   slot-scope="scope">
-            <img :src="scope.row.image"  min-width="70" height="70" />
-          </template>
-        </el-table-column>
-        <el-table-column prop="teamName" width="240" align="center"></el-table-column>
+        <!--<el-table-column prop="teamId" width="120" align="center"></el-table-column>-->
+        <!--<el-table-column width="240" align="center">-->
+          <!--<template   slot-scope="scope">-->
+            <!--<img :src="scope.row.image"  min-width="70" height="70" />-->
+          <!--</template>-->
+        <!--</el-table-column>-->
+        <!--<el-table-column prop="teamName" width="240" align="center"></el-table-column>-->
     </el-card>
   </div>
 </template>
