@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "cssnano": "^4.1.10",
     "element-ui": "^2.4.11",
     "qs": "^6.6.0",
     "vue": "^2.5.2",
@@ -62,7 +63,7 @@
     "jest-serializer-vue": "^0.3.0",
     "nightwatch": "^1.1.2",
     "node-notifier": "^5.1.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
     "ora": "^1.2.0",
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
