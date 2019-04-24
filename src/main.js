@@ -20,6 +20,8 @@ Vue.prototype.qs = qs
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
+// 引用压缩版时也能开启vue调试
+Vue.config.devtools = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
