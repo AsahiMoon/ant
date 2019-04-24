@@ -17,7 +17,6 @@ const News = () => import('../views/News')
 const CreateTeam = () => import('../views/CreateTeam')
 
 export default new Router({
-  mode: 'hash',
   routes: [
     {
       path: '/',
