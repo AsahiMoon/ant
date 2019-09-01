@@ -65,14 +65,14 @@ export default {
   methods: {
     /* 提交进行判断的函数 */
     submitData: function () {
-      // 转成axios需要的形式
-      let PostData = {'username': this.form.name, 'password': this.form.password}
+      // 这里接口文档要求表单形式
+      let PostData = this.qs.stringify({username: this.form.name, password: this.form.password})
       this.$http.post('/ant/login', PostData).then(response => {
         if (response.data.code === 0) {
-          window.localStorage['token'] = response.data.extra.token
+          window.localStorage['token'] = response.data.data.token
           this.$router.push({path: '/Team'})
         } else {
-          alert(response.data.message)
+          alert(response.data.msg)
         }
       }).catch(error => {
         alert('错误：' + error)

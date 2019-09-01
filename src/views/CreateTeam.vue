@@ -39,10 +39,10 @@ export default {
           let PostData = this.qs.stringify({'teamName': this.ruleForm.teamname})
           this.$http.post('/ant/team/create', PostData).then(response => {
             if (response.data.code === 0) {
-              alert(response.data.message)
+              alert(response.data.msg)
               this.$router.push({path: '/Team'})
             } else {
-              alert(response.data.message)
+              alert(response.data.msg)
             }
           }).catch(error => {
             alert('错误：' + error)
