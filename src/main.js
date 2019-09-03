@@ -16,6 +16,7 @@ import http from './http'
 import qs from 'qs'
 Vue.prototype.$http = http
 Vue.prototype.qs = qs
+Vue.config.devtools = true
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

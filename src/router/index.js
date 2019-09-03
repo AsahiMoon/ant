@@ -15,6 +15,8 @@ const Team = () => import('@/views/Team')
 const TeamWork = () => import('../components/TeamWork')
 const News = () => import('../views/News')
 const CreateTeam = () => import('../views/CreateTeam')
+const JoinTeam = () => import('../views/JoinTeam')
+const ManagementTeam = () => import('../views/ManagementTeam')
 
 export default new Router({
   routes: [
@@ -47,6 +49,16 @@ export default new Router({
           path: '/CreateTeam',
           name: CreateTeam,
           component: CreateTeam
+        },
+        {
+          path: '/JoinTeam',
+          name: JoinTeam,
+          component: JoinTeam
+        },
+        {
+          path: '/ManagementTeam',
+          name: ManagementTeam,
+          component: ManagementTeam
         }
       ]
     }
