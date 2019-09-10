@@ -10,10 +10,15 @@
         <el-button type="primary" round @click="joinTeam">加入团队</el-button>
       </el-col>
     </el-row>
-    <el-table :data="tableData" style="width: 420px; margin: auto; padding-top: 50px" @row-click="menagementTeam">
+    <el-table :data="tableData" style="width: 600px; margin: auto; padding-top: 50px" @row-click="menagementTeam">
       <el-table-column prop="teamId" width="120" align="center" label="teamId"></el-table-column>
       <el-table-column prop="teamName" width="240" align="center" label="teamName"></el-table-column>
       <el-table-column prop="level" width="60" align="center" label="level"></el-table-column>
+      <el-table-column width="180" align="center" label="exit">
+        <template slot-scope="scope">
+          <el-button size="mini" type="danger" icon="el-icon-delete" @click.stop="exitTeam(scope.row)" round></el-button>
+        </template>
+      </el-table-column>
     </el-table>
   </el-card>
 </div>
@@ -45,6 +50,19 @@ export default {
       // 查看团队列表
       this.$http.get('/ant/team/list').then(response => {
         this.tableData = (response.data.data)
+      }).catch(error => {
+        alert('错误：' + error)
+      })
+    },
+    exitTeam: function (row) {
+      let data = this.qs.stringify({
+        'teamId': row.teamId
+      })
+      this.$http.post('/ant/team/exit', data).then(response => {
+        alert(response.data.msg)
+        if (response.data.code === 0) {
+          this.getTeamList()
+        }
       }).catch(error => {
         alert('错误：' + error)
       })

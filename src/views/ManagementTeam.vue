@@ -4,10 +4,10 @@
       <el-row style="width: 920px; height: 160px">
         <el-col style="font-size: 400%; padding-top: 37px">申请加入{{ this.teamName }}</el-col>
       </el-row>
-      <el-table :data="teamPending" style="width: 420px; margin: auto; padding-top: 50px">
+      <el-table :data="teamPending" style="width: 560px; margin: auto; padding-top: 50px">
         <el-table-column prop="userId" width="120" align="center" label="userId"></el-table-column>
         <el-table-column prop="userName" width="240" align="center" label="userName"></el-table-column>
-        <el-table-column prop="level" width="60" align="center" label="Y/N">
+        <el-table-column prop="level" width="200" align="center" label="Y/N">
           <template slot-scope="scope">
             <el-button size="mini" @click="accept(scope.$index, scope.row)">行吧</el-button>
             <el-button size="mini" type="danger" @click="refuse(scope.$index, scope.row)">guna</el-button>
@@ -48,7 +48,7 @@ export default {
       })
     },
     accept: function (index, row) {
-      let message = '/ant/team/' + this.teamId + '/pending/approve/' + row.userId
+      let message = '/ant/team/' + this.teamId + '/pending/approve/' + row.id
       this.$http.post(message).then(response => {
         if (response.data.code === 0) {
           alert(response.data.msg)
@@ -56,18 +56,19 @@ export default {
       }).catch(error => {
         alert('错误：' + error)
       })
+      this.getTeamPending()
+    },
+    refuse: function (index, row) {
+      let message = '/ant/team/' + this.teamId + '/pending/refuse/' + row.id
+      this.$http.post(message).then(response => {
+        if (response.data.code === 0) {
+          alert(response.data.msg)
+        }
+      }).catch(error => {
+        alert('错误：' + error)
+      })
+      this.getTeamPending()
     }
-    // TODO: refuse
-    // refuse: function (index, row) {
-    //   let message = '/ant/team/' + this.teamId + '/pending/approve/' + row.userId
-    //   this.$http.post(message).then(response => {
-    //     if (response.data.code === 0) {
-    //       alert(response.data.msg)
-    //     }
-    //   }).catch(error => {
-    //     alert('错误：' + error)
-    //   })
-    // }
   }
 }
 </script>

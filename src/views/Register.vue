@@ -93,6 +93,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.submitData()
+          this.$router.push({path: '/'})
         } else {
           return false
         }
