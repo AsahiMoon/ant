@@ -10,11 +10,17 @@
         <el-button type="primary" round @click="joinTeam">加入团队</el-button>
       </el-col>
     </el-row>
-    <el-table :data="tableData" style="width: 600px; margin: auto; padding-top: 50px" @row-click="menagementTeam">
+    <el-table :data="tableData" style="width: 660px; margin: auto; padding-top: 50px" @row-click="teamProject">
       <el-table-column prop="teamId" width="120" align="center" label="teamId"></el-table-column>
       <el-table-column prop="teamName" width="240" align="center" label="teamName"></el-table-column>
       <el-table-column prop="level" width="60" align="center" label="level"></el-table-column>
-      <el-table-column width="180" align="center" label="exit">
+      <el-table-column width="50"></el-table-column>
+      <el-table-column width="90" align="center" label="manage">
+        <template slot-scope="scope">
+          <el-button size="mini" type="info" icon="el-icon-setting" @click.stop="ManagementTeam(scope.row)" round></el-button>
+        </template>
+      </el-table-column>
+      <el-table-column width="100" align="center" label="exit">
         <template slot-scope="scope">
           <el-button size="mini" type="danger" icon="el-icon-delete" @click.stop="exitTeam(scope.row)" round></el-button>
         </template>
@@ -43,7 +49,10 @@ export default {
     joinTeam: function () {
       this.$router.push({path: '/JoinTeam'})
     },
-    menagementTeam: function (row) {
+    teamProject: function (row) {
+      this.$router.push({path: '/TeamProject', query: { message: row }})
+    },
+    ManagementTeam: function (row) {
       this.$router.push({path: '/ManagementTeam', query: { message: row }})
     },
     getTeamList: function () {

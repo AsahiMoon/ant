@@ -16,6 +16,9 @@ const TeamWork = () => import('../components/TeamWork')
 const News = () => import('../views/News')
 const CreateTeam = () => import('../views/CreateTeam')
 const JoinTeam = () => import('../views/JoinTeam')
+const ManagementJoinTeam = () => import('../views/ManagementJoinTeam')
+const TeamProject = () => import('../views/TeamProject')
+const CreateProject = () => import('../views/CreateProject')
 const ManagementTeam = () => import('../views/ManagementTeam')
 
 export default new Router({
@@ -37,27 +40,42 @@ export default new Router({
       children: [
         {
           path: '/Team',
-          name: Team,
+          name: 'Team',
           component: Team
         },
         {
           path: '/News',
-          name: News,
+          name: 'News',
           component: News
         },
         {
           path: '/CreateTeam',
-          name: CreateTeam,
+          name: 'CreateTeam',
           component: CreateTeam
         },
         {
           path: '/JoinTeam',
-          name: JoinTeam,
+          name: 'JoinTeam',
           component: JoinTeam
         },
         {
+          path: '/ManagementJoinTeam',
+          name: 'ManagementJoinTeam',
+          component: ManagementJoinTeam
+        },
+        {
+          path: '/TeamProject',
+          name: 'TeamProject',
+          component: TeamProject
+        },
+        {
+          path: '/CreateProject',
+          name: 'CreateProject',
+          component: CreateProject
+        },
+        {
           path: '/ManagementTeam',
-          name: ManagementTeam,
+          name: 'ManagementTeam',
           component: ManagementTeam
         }
       ]

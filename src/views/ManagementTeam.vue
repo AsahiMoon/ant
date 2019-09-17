@@ -2,15 +2,20 @@
   <div style="width: 960px; min-height: 580px; margin: auto">
     <el-card style="min-height: 580px; padding: 0px">
       <el-row style="width: 920px; height: 160px">
-        <el-col style="font-size: 400%; padding-top: 37px">申请加入{{ this.teamName }}</el-col>
+        <el-col :span="16" style="font-size: 400%; padding-top: 37px">团队 {{ this.teamName }}</el-col>
+        <el-col :span="8" style="padding-top: 60px">
+          <el-button type="primary" plain @click="ManagementJoinTeam">管理申请</el-button>
+        </el-col>
       </el-row>
-      <el-table :data="teamPending" style="width: 560px; margin: auto; padding-top: 50px">
+      <el-table :data="teamMember" style="width: 660px; margin: auto; padding-top: 50px">
         <el-table-column prop="userId" width="120" align="center" label="userId"></el-table-column>
         <el-table-column prop="userName" width="240" align="center" label="userName"></el-table-column>
-        <el-table-column prop="level" width="200" align="center" label="Y/N">
+        <el-table-column prop="level" width="300" align="center" label="level">
           <template slot-scope="scope">
-            <el-button size="mini" @click="accept(scope.$index, scope.row)">行吧</el-button>
-            <el-button size="mini" type="danger" @click="refuse(scope.$index, scope.row)">guna</el-button>
+            <el-button size="mini" @click="changeLevel(scope.row, '0')">0</el-button>
+            <el-button size="mini" @click="changeLevel(scope.row, '1')">1</el-button>
+            <el-button size="mini" @click="changeLevel(scope.row, '2')">2</el-button>
+            <el-button size="mini" @click="changeLevel(scope.row, '3')">3</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -25,20 +30,20 @@ export default {
     return {
       teamId: 0,
       teamName: '',
-      teamPending: []
+      teamMember: []
     }
   },
   mounted: function () {
     this.teamId = this.$route.query.message.teamId
     this.teamName = this.$route.query.message.teamName
-    this.getTeamPending()
+    this.getTeamMember()
   },
   methods: {
-    getTeamPending: function () {
-      let message = '/ant/team/' + this.teamId + '/pending'
-      this.$http.get(message).then(response => {
+    getTeamMember: function () {
+      let url = '/ant/team/' + this.teamId + '/members'
+      this.$http.get(url).then(response => {
         if (response.data.code === 0) {
-          this.teamPending = (response.data.data)
+          this.teamMember = (response.data.data)
         } else {
           alert(response.data.msg)
           this.$router.push({path: '/Team'})
@@ -47,27 +52,14 @@ export default {
         alert('错误：' + error)
       })
     },
-    accept: function (index, row) {
-      let message = '/ant/team/' + this.teamId + '/pending/approve/' + row.id
-      this.$http.post(message).then(response => {
-        if (response.data.code === 0) {
-          alert(response.data.msg)
-        }
-      }).catch(error => {
-        alert('错误：' + error)
+    changeLevel: function (row, level) {
+      let url = '/ant/team/' + this.teamId + '/authority/' + row.userId + '/' + level
+      this.$http.post(url).then(response => {
+        alert(response.data.msg)
       })
-      this.getTeamPending()
     },
-    refuse: function (index, row) {
-      let message = '/ant/team/' + this.teamId + '/pending/refuse/' + row.id
-      this.$http.post(message).then(response => {
-        if (response.data.code === 0) {
-          alert(response.data.msg)
-        }
-      }).catch(error => {
-        alert('错误：' + error)
-      })
-      this.getTeamPending()
+    ManagementJoinTeam: function () {
+      this.$router.push({path: '/ManagementJoinTeam', query: {message: this.$route.query.message}})
     }
   }
 }
