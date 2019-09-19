@@ -12,10 +12,11 @@
         <el-table-column prop="userName" width="240" align="center" label="userName"></el-table-column>
         <el-table-column prop="level" width="300" align="center" label="level">
           <template slot-scope="scope">
-            <el-button size="mini" @click="changeLevel(scope.row, '0')">0</el-button>
-            <el-button size="mini" @click="changeLevel(scope.row, '1')">1</el-button>
-            <el-button size="mini" @click="changeLevel(scope.row, '2')">2</el-button>
-            <el-button size="mini" @click="changeLevel(scope.row, '3')">3</el-button>
+            <el-button size="mini" :type="getLevel(scope.row, 0)" @click="changeLevel(scope.row, '0')">0</el-button>
+            <el-button size="mini" :type="getLevel(scope.row, 1)" @click="changeLevel(scope.row, '1')">1</el-button>
+            <el-button size="mini" :type="getLevel(scope.row, 2)" @click="changeLevel(scope.row, '2')">2</el-button>
+            <el-button size="mini" :type="getLevel(scope.row, 3)" @click="changeLevel(scope.row, '3')">3</el-button>
+            <el-button size="mini" :type="getLevel(scope.row, 4)" disabled>4</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -56,10 +57,19 @@ export default {
       let url = '/ant/team/' + this.teamId + '/authority/' + row.userId + '/' + level
       this.$http.post(url).then(response => {
         alert(response.data.msg)
+        if (response.data.code === 0) {
+          this.getTeamMember()
+        }
       })
     },
     ManagementJoinTeam: function () {
       this.$router.push({path: '/ManagementJoinTeam', query: {message: this.$route.query.message}})
+    },
+    getLevel: function (row, level) {
+      if (row.level === level) {
+        return 'danger'
+      }
+      return ''
     }
   }
 }
