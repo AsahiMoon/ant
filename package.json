@@ -17,7 +17,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "cssnano": "^4.1.10",
-    "element-ui": "^2.4.11",
+    "element-ui": "^2.13.0",
     "qs": "^6.6.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",

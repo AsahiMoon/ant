@@ -30,6 +30,8 @@
 
 <!--数据存贮交互，事件控制地区-->
 <script>
+import global from '../global_variable'
+
 export default {
   name: 'login',
   data () {
@@ -70,6 +72,7 @@ export default {
       this.$http.post('/ant/login', PostData).then(response => {
         if (response.data.code === 0) {
           window.localStorage['token'] = response.data.data.token
+          global.userId = response.data.data.id
           this.$router.push({path: '/Team'})
         } else {
           alert(response.data.msg)

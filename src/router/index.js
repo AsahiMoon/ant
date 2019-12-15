@@ -20,6 +20,9 @@ const ManagementJoinTeam = () => import('../views/ManagementJoinTeam')
 const TeamProject = () => import('../views/TeamProject')
 const CreateProject = () => import('../views/CreateProject')
 const ManagementTeam = () => import('../views/ManagementTeam')
+const MyProject = () => import('../views/MyProject')
+const Task = () => import('../views/Task')
+const CreateTask = () => import('../views/CreateTask')
 
 export default new Router({
   routes: [
@@ -77,6 +80,21 @@ export default new Router({
           path: '/ManagementTeam',
           name: 'ManagementTeam',
           component: ManagementTeam
+        },
+        {
+          path: '/MyProject',
+          name: 'MyProject',
+          component: MyProject
+        },
+        {
+          path: '/Task',
+          name: 'Task',
+          component: Task
+        },
+        {
+          path: '/CreateTask',
+          name: 'CreateTask',
+          component: CreateTask
         }
       ]
     }

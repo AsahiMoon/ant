@@ -4,7 +4,7 @@
       <el-row style="width: 920px; height: 160px">
         <el-col :span="16" style="font-size: 400%; padding-top: 37px">团队 {{ this.teamName }}</el-col>
         <el-col :span="8" style="padding-top: 60px">
-          <el-button type="primary" plain @click="ManagementJoinTeam">管理申请</el-button>
+          <el-button type="primary" plain @click="ManagementJoinTeam">管理申请加入</el-button>
         </el-col>
       </el-row>
       <el-table :data="teamMember" style="width: 660px; margin: auto; padding-top: 50px">

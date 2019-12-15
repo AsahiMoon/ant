@@ -10,7 +10,7 @@
           <el-button @click="managementTeam" type="primary" plain>管理该团队</el-button>
         </el-col>
       </el-row>
-      <el-table :data="teamProject" style="width: 720px; margin: auto; padding-top: 50px">
+      <el-table :data="teamProject" style="width: 720px; margin: auto; padding-top: 50px" @row-click="task">
         <el-table-column prop="id" width="150" align="center" label="projectId"></el-table-column>
         <el-table-column prop="name" width="300" align="center" label="projectName"></el-table-column>
         <el-table-column prop="teamId" width="150" align="center" label="teamId"></el-table-column>
@@ -67,6 +67,9 @@ export default {
     },
     managementTeam: function () {
       this.$router.push({path: '/ManagementTeam', query: {message: this.$route.query.message}})
+    },
+    task: function (row) {
+      this.$router.push({path: '/Task', query: {message: row}})
     }
   }
 }
