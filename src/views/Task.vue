@@ -2,10 +2,11 @@
   <div style="width: 1260px; min-height: 580px; margin: auto">
     <el-card style="min-height: 580px; padding: 0px">
       <el-row >
-        <el-col :span="16" style="font-size: 400%;">{{this.$route.query.message.name}}</el-col>
+        <el-col :span="1"><el-button type="primary" circle icon="el-icon-back" @click="returnToTeamProject"></el-button></el-col>
+        <el-col :span="15" style="font-size: 400%;">{{this.$route.query.message.name}}</el-col>
         <el-col :span="8" style="padding-top: 15px">
           <el-button type="primary" round @click="createTask">创建任务</el-button>
-          <el-button type="primary" round @click="createTask">分配任务</el-button>
+          <el-button type="primary" round @click="allotTask">分配任务</el-button>
         </el-col>
       </el-row>
       <el-table :data="taskList" style="width: 1000px; margin: auto; padding-top: 50px">
@@ -38,14 +39,16 @@ export default{
     this.getTaskList()
   },
   methods: {
-    createTeam: function () {
-      this.$router.push({path: '/CreateTeam'})
-    },
     createTask: function () {
       this.$router.push({path: '/CreateTask', query: {message: this.$route.query.message}})
     },
+    allotTask: function () {
+      this.$router.push({path: '/AllotTask', query: {message: this.$route.query.message}})
+    },
+    returnToTeamProject () {
+      this.$router.push({path: '/TeamProject', query: {message: this.$route.query.message}})
+    },
     getTaskList: function () {
-      // 查看团队列表
       let message = '/ant/task/' + this.$route.query.message.id + '/list'
       this.$http.get(message).then(response => {
         if (response.data.code === 0) {

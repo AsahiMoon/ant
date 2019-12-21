@@ -23,6 +23,7 @@ const ManagementTeam = () => import('../views/ManagementTeam')
 const MyProject = () => import('../views/MyProject')
 const Task = () => import('../views/Task')
 const CreateTask = () => import('../views/CreateTask')
+const AllotTask = () => import('../views/AllotTask')
 
 export default new Router({
   routes: [
@@ -95,6 +96,11 @@ export default new Router({
           path: '/CreateTask',
           name: 'CreateTask',
           component: CreateTask
+        },
+        {
+          path: '/AllotTask',
+          name: 'AllotTask',
+          component: AllotTask
         }
       ]
     }

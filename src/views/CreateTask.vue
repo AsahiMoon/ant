@@ -2,7 +2,10 @@
   <div style="width: 480px; min-height: 580px; margin: auto">
     <el-card style="min-height: 580px; padding: 0px">
       <el-row>
-        <el-col style="font-size: 200%; padding-top: 50px" >创建你的项目！</el-col>
+        <el-col span="4"><el-button type="primary" circle icon="el-icon-back" @click="returnToTask"></el-button></el-col>
+      </el-row>
+      <el-row>
+        <el-col style="font-size: 200%; padding-top: 0px" >创建你的项目！</el-col>
       </el-row>
       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" style="width: 360px; margin: auto">
         <el-form-item label="团队ID" prop="teamId" style="padding-top: 100px">
@@ -116,6 +119,9 @@ export default {
           return false
         }
       })
+    },
+    returnToTask: function () {
+      this.$router.push({path: '/Task', query: {message: this.$route.query.message}})
     }
   }
 }
