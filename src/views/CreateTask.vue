@@ -5,7 +5,7 @@
         <el-col span="4"><el-button type="primary" circle icon="el-icon-back" @click="returnToTask"></el-button></el-col>
       </el-row>
       <el-row>
-        <el-col style="font-size: 200%; padding-top: 0px" >创建你的项目！</el-col>
+        <el-col style="font-size: 200%; padding-top: 0px" >创建任务</el-col>
       </el-row>
       <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" style="width: 360px; margin: auto">
         <el-form-item label="团队ID" prop="teamId" style="padding-top: 100px">
